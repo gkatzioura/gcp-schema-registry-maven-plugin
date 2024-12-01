@@ -2,7 +2,9 @@ name: Test pipeline
 
 on:
   push:
-    branches: [ "*" ]
+    branches-ignore:
+      - main
+      - 'releases/**'
 
 permissions:
   contents: read
