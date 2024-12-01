@@ -20,4 +20,4 @@ jobs:
           distribution: 'temurin'
           architecture: x64
       - name: Run the Maven verify phase
-        run: mvn clean test
+        run: mvn --batch-mode --update-snapshots verify
