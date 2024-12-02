@@ -24,12 +24,7 @@ interface PatternMatcher {
   Optional<String> matches(Schema schema);
 
   static PatternMatcher matchAll() {
-    return new PatternMatcher() {
-      @Override
-      public Optional<String> matches(Schema schema) {
-        return Optional.of(schema.getName());
-      }
-    };
+    return schema -> Optional.of(schema.getName());
   }
 
 }

@@ -55,7 +55,7 @@ class DownloadSchemaRegistryMojoTest {
   }
 
   @Test
-  void shouldDownloadFiles() throws MojoExecutionException, MojoFailureException {
+  void shouldDownloadFiles() throws MojoExecutionException {
     SchemaRepository schemaRepository = mock(SchemaRepository.class);
     DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = spy(new DownloadSchemaRegistryMojo());
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"schemaRepository", schemaRepository);

@@ -16,13 +16,16 @@
 
 package io.github.gkatzioura.gcp.schema.maven;
 
+import static io.github.gkatzioura.gcp.schema.maven.TestUtils.TEST_AVRO_SCHEMA;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.google.pubsub.v1.Schema;
+import com.google.pubsub.v1.SchemaName;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import org.apache.maven.plugin.logging.Log;
 import org.junit.jupiter.api.Test;
@@ -67,13 +70,16 @@ class PatternFactoryTest {
     Log log = mock(Log.class);
     PatternFactory patternFactory = new PatternFactory(log);
     List<String> patternsStr = new ArrayList<>();
-    String pattern = "a*b";
+    String pattern = ".*a*b";
     patternsStr.add(pattern);
 
     List<String> versions = new ArrayList<>();
     versions.add("1");
 
-    patternFactory.create(patternsStr, versions);
+    PatternMatcher patternMatcher = patternFactory.create(patternsStr, versions);
+    Schema schema = Schema.newBuilder(TEST_AVRO_SCHEMA).setName(SchemaName.of("test","acb").toString()).build();
+    Optional<String> version =  patternMatcher.matches(schema);
+    assertEquals("acb@1", version.get());
   }
 
   @Test
@@ -86,14 +92,10 @@ class PatternFactoryTest {
 
     List<String> versions = null;
 
-    patternFactory.create(patternsStr, versions);
-    /*
-    assertFalse(patternVersions.isEmpty());
-
-    PatternVersion first = patternVersions.get(0);
-    assertEquals("a*b", first.getPattern().pattern());
-    assertFalse(first.getVersion().isPresent());
-     */
+    PatternMatcher patternMatcher = patternFactory.create(patternsStr, versions);
+    Schema schema = Schema.newBuilder(TEST_AVRO_SCHEMA).setName(SchemaName.of("test","acb").toString()).build();
+    Optional<String> version =  patternMatcher.matches(schema);
+    assertFalse(version.isPresent());
   }
 
   @Test

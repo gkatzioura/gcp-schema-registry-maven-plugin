@@ -90,7 +90,7 @@ class LocalSchemaStorage {
 
       File projectSubPath = new File(file.getPath() + FILE_SEPARATOR + project);
       if (!projectSubPath.isDirectory()) {
-        log.debug(String.format("Creating outputDirectory('%s') and project subpath.", file, project));
+        log.debug(String.format("Creating outputDirectory('%s') and project ('%s') subpath.", file, project));
         if (!projectSubPath.mkdirs()) {
           throw new IllegalStateException(
               "Could not create output directory " + file);

@@ -38,6 +38,7 @@ class SchemaRepository {
   }
 
   List<Schema> list() {
+    log.debug(String.format("Listing all schemas from registry '%s'", projectName.getProject()));
     ListSchemasPagedResponse listSchemasPagedResponse = schemaServiceClient.listSchemas(projectName);
     List<Schema> schemas = new ArrayList<>();
     listSchemasPagedResponse.iterateAll().forEach(schemas::add);
@@ -45,6 +46,7 @@ class SchemaRepository {
   }
 
   Schema fetch(String name) {
+    log.debug(String.format("Downloading schema '%s'", name));
     final SchemaName schemaName = extractSchemaName(name);
     return schemaServiceClient.getSchema(schemaName);
 

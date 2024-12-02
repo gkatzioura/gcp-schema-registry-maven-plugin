@@ -57,12 +57,6 @@ class PatternFactory {
     return new PatternVersions(patterns, versions);
   }
 
-  private PatternVersions patternsWithVersions(List<String> patternsStr,
-      List<String> versions) {
-    List<Pattern> patterns = create(patternsStr);
-    return new PatternVersions(patterns, versions);
-  }
-
   private Pattern createPattern(String subject) {
     try {
       log.debug(String.format("Creating pattern for '%s'", subject));
