@@ -114,6 +114,9 @@ limitations under the License.
             <goals>
               <goal>report</goal>
             </goals>
+            <configuration>
+              <formats>XML</formats>
+            </configuration>
           </execution>
         </executions>
       </plugin>
