@@ -74,7 +74,7 @@ class DownloadSchemaRegistryMojoTest {
   }
 
   @Test
-  void shouldDownloadOnlyAvroFiles() throws MojoExecutionException, MojoFailureException {
+  void shouldDownloadOnlyAvroFiles() throws MojoExecutionException {
     SchemaRepository schemaRepository = mock(SchemaRepository.class);
     DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = spy(new DownloadSchemaRegistryMojo());
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"schemaRepository", schemaRepository);
@@ -94,7 +94,7 @@ class DownloadSchemaRegistryMojoTest {
   }
 
   @Test
-  void shouldNotDownloadOtherTypeSpecified() throws MojoExecutionException, MojoFailureException {
+  void shouldNotDownloadOtherTypeSpecified() throws MojoExecutionException {
     SchemaRepository schemaRepository = mock(SchemaRepository.class);
     DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = spy(new DownloadSchemaRegistryMojo());
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"schemaRepository", schemaRepository);
@@ -112,7 +112,7 @@ class DownloadSchemaRegistryMojoTest {
   }
 
   @Test
-  void shouldThrowExceptionOnGCPError() throws MojoExecutionException, MojoFailureException {
+  void shouldThrowExceptionOnGCPError() {
     SchemaRepository schemaRepository = mock(SchemaRepository.class);
     DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = spy(new DownloadSchemaRegistryMojo());
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"schemaRepository", schemaRepository);
@@ -128,7 +128,7 @@ class DownloadSchemaRegistryMojoTest {
   }
 
   @Test
-  void throwExceptionOnPubSubError() throws MojoExecutionException, MojoFailureException {
+  void throwExceptionOnPubSubError() throws MojoExecutionException {
     SchemaRepository schemaRepository = mock(SchemaRepository.class);
     DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = spy(new DownloadSchemaRegistryMojo());
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"schemaRepository", schemaRepository);
@@ -147,7 +147,7 @@ class DownloadSchemaRegistryMojoTest {
   }
 
   @Test
-  void shouldNotExecuteIfSkipped() throws MojoExecutionException, MojoFailureException {
+  void shouldNotExecuteIfSkipped() throws MojoExecutionException {
     SchemaServiceClient schemaServiceClient = mock(SchemaServiceClient.class);
     DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = spy(new DownloadSchemaRegistryMojo());
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"client",schemaServiceClient);

@@ -23,12 +23,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.logging.Log;
 
 class LocalSchemaStorage {
 
   private final File directory;
+
+  private static final String FILE_SEPARATOR = FileSystems.getDefault().getSeparator();
 
   public LocalSchemaStorage(File directory) {
     this.directory = directory;
@@ -49,7 +52,7 @@ class LocalSchemaStorage {
     validateType(schema);
 
     SchemaName schemaName = SchemaName.parse(removeRevision(schema));
-    return new File(directory, schemaName.getProject() + "/" + schemaName.getSchema() + suffixFor(
+    return new File(directory, schemaName.getProject() + FILE_SEPARATOR + schemaName.getSchema() + suffixFor(
         schema.getType())).getPath();
   }
 
@@ -70,9 +73,9 @@ class LocalSchemaStorage {
         return ".avsc";
       case PROTOCOL_BUFFER:
         return ".proto";
+      default:
+        throw new IllegalArgumentException("Only avro and proto supported");
     }
-
-    throw new IllegalArgumentException("Only avro and proto supported");
   }
 
   static LocalSchemaStorage create(Log log, File file, String project)
@@ -85,7 +88,7 @@ class LocalSchemaStorage {
       }
       log.debug(String.format("Checking if outputDirectory('%s') exists.", file));
 
-      File projectSubPath = new File(file.getPath() + "/" + project);
+      File projectSubPath = new File(file.getPath() + FILE_SEPARATOR + project);
       if (!projectSubPath.isDirectory()) {
         log.debug(String.format("Creating outputDirectory('%s') and project subpath.", file, project));
         if (!projectSubPath.mkdirs()) {
