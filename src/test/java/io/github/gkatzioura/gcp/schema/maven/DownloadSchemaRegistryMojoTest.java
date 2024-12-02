@@ -51,6 +51,9 @@ class DownloadSchemaRegistryMojoTest {
     new File("./test-project").mkdirs();
     this.schemaRepository = mock(SchemaRepository.class);
     this.downloadSchemaRegistryMojo = setUpMojo(schemaRepository);
+    List<Schema> schemas = new ArrayList<>();
+    schemas.add(TEST_AVRO_SCHEMA);
+    when(schemaRepository.list()).thenReturn(schemas);
   }
 
   @AfterEach
@@ -60,7 +63,6 @@ class DownloadSchemaRegistryMojoTest {
 
   @Test
   void shouldDownloadFiles() throws MojoExecutionException {
-    setUpSchmemasResponse();
     when(schemaRepository.fetch(anyString())).thenReturn(TEST_AVRO_SCHEMA);
 
     downloadSchemaRegistryMojo.execute();
@@ -72,7 +74,6 @@ class DownloadSchemaRegistryMojoTest {
   @Test
   void shouldDownloadOnlyAvroFiles() throws MojoExecutionException {
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo, "schemaType",  "AVRO");
-    setUpSchmemasResponse();
 
     when(schemaRepository.fetch(anyString())).thenReturn(TEST_AVRO_SCHEMA);
 
@@ -85,7 +86,6 @@ class DownloadSchemaRegistryMojoTest {
   @Test
   void shouldNotDownloadOtherTypeSpecified() throws MojoExecutionException {
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo, "schemaType",  "PROTOCOL_BUFFER");
-    setUpSchmemasResponse();
 
     downloadSchemaRegistryMojo.execute();
 
@@ -94,21 +94,9 @@ class DownloadSchemaRegistryMojoTest {
 
   @Test
   void shouldThrowExceptionOnGCPError() {
-    setUpSchmemasResponse();
     when(schemaRepository.fetch(anyString())).thenThrow(new StatusRuntimeException(Status.NOT_FOUND));
 
     assertThrows(MojoExecutionException.class, () -> downloadSchemaRegistryMojo.execute());
-  }
-
-  @Test
-  void throwExceptionOnPubSubError() throws MojoExecutionException {
-    setUpSchmemasResponse();
-    when(schemaRepository.fetch(anyString())).thenReturn(TEST_AVRO_SCHEMA);
-
-    downloadSchemaRegistryMojo.execute();
-
-    File file = new File("./test-project/an-avro-schema-name.avsc");
-    assertTrue(file.exists());
   }
 
   @Test
@@ -136,12 +124,6 @@ class DownloadSchemaRegistryMojoTest {
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"project", PROJECT_NAME);
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo, "outputDirectory", new File("./"));
     return downloadSchemaRegistryMojo;
-  }
-
-  private void setUpSchmemasResponse() {
-    List<Schema> schemas = new ArrayList<>();
-    schemas.add(TEST_AVRO_SCHEMA);
-    when(schemaRepository.list()).thenReturn(schemas);
   }
 
 }
