@@ -1,0 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=gkatzioura_gcp-schema-registry-maven-plugin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=gkatzioura_gcp-schema-registry-maven-plugin)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=gkatzioura_gcp-schema-registry-maven-plugin&metric=bugs)](https://sonarcloud.io/summary/new_code?id=gkatzioura_gcp-schema-registry-maven-plugin)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=gkatzioura_gcp-schema-registry-maven-plugin&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=gkatzioura_gcp-schema-registry-maven-plugin)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=gkatzioura_gcp-schema-registry-maven-plugin&metric=coverage)](https://sonarcloud.io/summary/new_code?id=gkatzioura_gcp-schema-registry-maven-plugin)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=gkatzioura_gcp-schema-registry-maven-plugin&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=gkatzioura_gcp-schema-registry-maven-plugin)
