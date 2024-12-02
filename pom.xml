@@ -77,6 +77,15 @@ limitations under the License.
   </dependencies>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>5.0.0.4389</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -109,14 +118,10 @@ limitations under the License.
               </execution>
               <execution>
                 <id>report</id>
+                <phase>verify</phase>
                 <goals>
                   <goal>report</goal>
                 </goals>
-                <configuration>
-                  <formats>
-                    <format>XML</format>
-                  </formats>
-                </configuration>
               </execution>
             </executions>
           </plugin>
