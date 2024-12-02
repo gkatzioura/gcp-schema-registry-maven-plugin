@@ -122,12 +122,6 @@ class DownloadSchemaRegistryMojoTest {
   }
 
   @Test
-  void shouldSetClient() {
-    SchemaServiceClient schemaServiceClient = mock(SchemaServiceClient.class);
-    ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"client",schemaServiceClient);
-  }
-
-  @Test
   void shouldCloseClientWhenCallingClose() throws IOException {
     SchemaServiceClient schemaServiceClient = mock(SchemaServiceClient.class);
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"client",schemaServiceClient);

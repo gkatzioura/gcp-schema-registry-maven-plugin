@@ -53,19 +53,6 @@ class PatternFactoryTest {
   }
 
   @Test
-  void shouldCreateIfVersionEmpty() {
-    Log log = mock(Log.class);
-    PatternFactory patternFactory = new PatternFactory(log);
-    List<String> patternsStr = new ArrayList<>();
-    String pattern = "a*b";
-    patternsStr.add(pattern);
-
-    List<String> versions = new ArrayList<>();
-
-    patternFactory.create(patternsStr, versions);
-  }
-
-  @Test
   void shouldCreateMapIfSizeAndVersionEqual() {
     Log log = mock(Log.class);
     PatternFactory patternFactory = new PatternFactory(log);
@@ -90,12 +77,11 @@ class PatternFactoryTest {
     String pattern = "a*b";
     patternsStr.add(pattern);
 
-    List<String> versions = null;
-
-    PatternMatcher patternMatcher = patternFactory.create(patternsStr, versions);
     Schema schema = Schema.newBuilder(TEST_AVRO_SCHEMA).setName(SchemaName.of("test","acb").toString()).build();
-    Optional<String> version =  patternMatcher.matches(schema);
-    assertFalse(version.isPresent());
+    Optional<String> nullVersionResult =  patternFactory.create(patternsStr, null).matches(schema);
+    assertFalse(nullVersionResult.isPresent());
+    Optional<String> emptyVersionResult =  patternFactory.create(patternsStr, new ArrayList<>()).matches(schema);
+    assertFalse(emptyVersionResult.isPresent());
   }
 
   @Test

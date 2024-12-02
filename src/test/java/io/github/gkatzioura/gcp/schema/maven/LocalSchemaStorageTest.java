@@ -133,8 +133,8 @@ class LocalSchemaStorageTest {
     Log log = mock(Log.class);
     File file = new File(filePath).getParentFile();
 
-    LocalSchemaStorage localSchemaStorage = LocalSchemaStorage.create(log, file, "project-id");
-    assertNotNull(localSchemaStorage);
+    LocalSchemaStorage createdSchemaStorage = LocalSchemaStorage.create(log, file, "project-id");
+    assertNotNull(createdSchemaStorage);
 
     boolean projectSubDirectoryExists = new File(file.getPath()+"/project-id").isDirectory();
     assertTrue(projectSubDirectoryExists);
