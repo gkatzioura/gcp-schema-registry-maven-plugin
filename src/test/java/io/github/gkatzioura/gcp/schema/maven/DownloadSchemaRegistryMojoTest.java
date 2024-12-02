@@ -114,7 +114,6 @@ class DownloadSchemaRegistryMojoTest {
   @Test
   void shouldNotExecuteIfSkipped() throws MojoExecutionException {
     SchemaServiceClient schemaServiceClient = mock(SchemaServiceClient.class);
-    DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = spy(new DownloadSchemaRegistryMojo());
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"client",schemaServiceClient);
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"skip", true);
     downloadSchemaRegistryMojo.execute();
@@ -125,7 +124,6 @@ class DownloadSchemaRegistryMojoTest {
   @Test
   void shouldSetClient() {
     SchemaServiceClient schemaServiceClient = mock(SchemaServiceClient.class);
-    DownloadSchemaRegistryMojo downloadSchemaRegistryMojo = new DownloadSchemaRegistryMojo();
     ReflectionTestUtils.setField(downloadSchemaRegistryMojo,"client",schemaServiceClient);
   }
 
