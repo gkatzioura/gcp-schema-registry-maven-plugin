@@ -21,9 +21,8 @@ jobs:
           server-password: MAVEN_PASSWORD
       - name: Publish package
         run: |
-          git config --global user.email "refill-rate-limiter@github.com"
-          git config --global user.name "Refill Rate Limiter release"
-          echo $GPG_KEY | base64 --decode > key.gpg
+          git config --global user.email "gcp-schemas-maven-plugin@github.com"
+          git config --global user.name "gcp-schemas-maven-plugin release"
           mvn -Prelease --batch-mode deploy -DskipTests
         env:
           MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
