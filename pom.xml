@@ -30,6 +30,13 @@ limitations under the License.
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
+  <scm>
+    <url>https://github.com/gkatzioura/gcp-schemas-maven-plugin</url>
+    <connection>scm:git:https://github.com/gkatzioura/gcp-schemas-maven-plugin.git</connection>
+    <developerConnection>scm:git:https://github.com/gkatzioura/gcp-schemas-maven-plugin.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.maven</groupId>

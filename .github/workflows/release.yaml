@@ -21,11 +21,12 @@ jobs:
           server-password: MAVEN_PASSWORD
           gpg-private-key: ${{ secrets.GPG_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
+
       - name: Publish package
         run: |
           git config --global user.email "gcp-schemas-maven-plugin@github.com"
           git config --global user.name "gcp-schemas-maven-plugin release"
-          mvn -P release --batch-mode deploy -DskipTests
+          mvn -P release --batch-mode release:prepare release:perform -DskipTests
         env:
           MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
