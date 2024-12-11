@@ -28,7 +28,7 @@ You need to include the plugin at the plugins section of your maven project.
       <plugin>
         <groupId>io.github.gkatzioura.gcp</groupId>
         <artifactId>gcp-schemas-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <configuration>
           <project>gcp-project</project>
           <outputDirectory>src/main/avro</outputDirectory>
@@ -55,7 +55,7 @@ You can specify to download only one specific schema.
       <plugin>
         <groupId>io.github.gkatzioura.gcp</groupId>
         <artifactId>gcp-schemas-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <executions>
           <execution>
             <id>one</id>
@@ -85,7 +85,7 @@ You can specify more than one regex pattern.
       <plugin>
         <groupId>io.github.gkatzioura.gcp</groupId>
         <artifactId>gcp-schemas-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <executions>
           <execution>
             <id>one</id>
@@ -123,7 +123,7 @@ The number of elements in `subjectPatterns` and `versions` should be the same.
       <plugin>
         <groupId>io.github.gkatzioura.gcp</groupId>
         <artifactId>gcp-schemas-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <executions>
           <execution>
             <id>one</id>
@@ -150,7 +150,7 @@ It is feasible to download schemas from more than one project by providing multi
       <plugin>
         <groupId>io.github.gkatzioura.gcp</groupId>
         <artifactId>gcp-schemas-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <executions>
           <execution>
             <id>one</id>
@@ -191,7 +191,7 @@ You can combine the plugin with a schema model generation plugin. Here is an exa
       <plugin>
         <groupId>io.github.gkatzioura.gcp</groupId>
         <artifactId>gcp-schemas-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <executions>
           <execution>
             <id>one</id>
