@@ -18,9 +18,10 @@ limitations under the License.
   <groupId>io.github.gkatzioura.gcp</groupId>
   <artifactId>gcp-schemas-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <name>gcp-schema-registry-plugin Maven Mojo</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/gkatzioura/gcp-schemas-maven-plugin</url>
+  <description>The purpose of GCP Schemas maven plugin is to download the schemas hosted in more than one GCP projects. On a maven project using the plugin you can download the schemas locally. This makes it feasible to generate the corresponding Java models using a code generation plugin.</description>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
@@ -28,6 +29,22 @@ limitations under the License.
     <sonar.organization>io-github-gkatzioura</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Emmanouil Gkatziouras</name>
+      <organization>egkatzioura</organization>
+      <organizationUrl>https://egkatzioura.com/</organizationUrl>
+    </developer>
+  </developers>
 
   <scm>
     <url>https://github.com/gkatzioura/gcp-schemas-maven-plugin</url>

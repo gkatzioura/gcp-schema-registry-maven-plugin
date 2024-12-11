@@ -21,7 +21,6 @@ jobs:
           server-password: MAVEN_PASSWORD
           gpg-private-key: ${{ secrets.GPG_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
-
       - name: Publish package
         run: |
           git config --global user.email "gcp-schemas-maven-plugin@github.com"
