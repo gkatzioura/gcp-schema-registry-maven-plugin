@@ -25,7 +25,7 @@ jobs:
         run: |
           git config --global user.email "gcp-schemas-maven-plugin@github.com"
           git config --global user.name "gcp-schemas-maven-plugin release"
-          mvn -Prelease --batch-mode deploy -DskipTests
+          mvn -P release --batch-mode deploy -DskipTests
         env:
           MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
